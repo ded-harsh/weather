@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="{% static 'weatherapp/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="search-bar">
+            <form method="get" action="/">
+                <input type="text" id="location-search" name="location" placeholder="Search for location" value="{{ location }}">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="weather-details">
+            <div class="current-weather">
+                <h2>Current Weather</h2>
+                <p class="time">6:25 PM</p>
+                <p class="temperature">{{ weather_data.main.temp }}°C</p>
+                <p class="weather-description">{{ weather_data.weather.0.description }}</p>
+                <div class="weather-stats">
+                    <p>{{ weather_data.main.aqi }} AQI</p>
+                    <p>{{ weather_data.main.humidity }}% Humidity</p>
+                    <p>{{ weather_data.wind.speed }} km/h Wind</p>
+                </div>
+            </div>
+            <div class="map-container">
+                <img src="{{ static_map_url }}" alt="Static Map">
+            </div>
+            <div class="popular-cities">
+                <h2>Popular Cities</h2>
+                <ul>
+                    <li>Delhi - Partly Cloudy</li>
+                    <li>Mumbai - Drizzle Rain</li>
+                    <li>Hyderabad - Heavy Rain</li>
+                    <li>Bangalore - Light Thunders</li>
+                    <li>Kolkata - Mostly Sunny</li>
+                </ul>
+            </div>
+        </div>
+        <div class="forecast">
+            <h2>Forecast</h2>
+            <div class="forecast-details">
+                <div class="forecast-day">Thu - 24°C/22°C</div>
+                <div class="forecast-day">Fri - 24°C/22°C</div>
+                <div class="forecast-day">Sat - 24°C/22°C</div>
+                <div class="forecast-day">Sun - 24°C/22°C</div>
+                <div class="forecast-day">Mon - 24°C/22°C</div>
+                <div class="forecast-day">Tue - 24°C/22°C</div>
+            </div>
+        </div>
+        <div class="summary">
+            <h2>Summary</h2>
+            <div class="summary-details">
+                <p>Rain: 78%</p>
+                <p>Now</p>
+                <p>9 PM</p>
+                <p>11 PM</p>
+                <p>1 AM</p>
+                <p>3 AM</p>
+                <p>5 AM</p>
+                <p>7 AM</p>
+                <p>11 AM</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
